@@ -2,26 +2,29 @@ package es.spring.ecommerce.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "category_seq", sequenceName = "category_seq", allocationSize = 50)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_seq")
     private long id;
-
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    @Version
+    private Long version;
 
     public Category() {
     }
 
-    public Category(long id, String name, List<Product> products) {
+    public Category(long id, String name) {
         this.id = id;
         this.name = name;
-        this.products = products;
+    }
+
+    public Category(long id, String name, Long version) {
+        this.id = id;
+        this.name = name;
+        this.version = version;
     }
 
     public Long getId() {
@@ -40,20 +43,11 @@ public class Category {
         this.name = name;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", products=" + products +
-                '}';
+    public void setVersion(Long version) {
+        this.version = version;
     }
 }

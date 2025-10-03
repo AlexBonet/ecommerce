@@ -3,14 +3,14 @@ package es.spring.ecommerce.dto;
 public class ProductDto {
     private Long id;
     private String name;
-    private double price;
-    private int stock;
+    private Double price;
+    private Integer stock;
     private Long categoryId;
 
     public ProductDto() {
     }
 
-    public ProductDto(Long id, String name, double price, int stock, Long categoryId) {
+    public ProductDto(Long id, String name, Double price, Integer stock, Long categoryId) {
         this.id = id;
         this.name = name;
         this.price = price;

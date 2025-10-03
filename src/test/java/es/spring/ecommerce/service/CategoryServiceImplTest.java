@@ -60,11 +60,11 @@ class CategoryServiceImplTest {
 
     @Test
     void findAll_mapsAllEntitiesToDtos() {
-        Category e1 = new Category(1L, "Electrónica", List.of());
-        Category e2 = new Category(2L, "Hogar", List.of());
+        Category e1 = new Category(1L, "Electrónica");
+        Category e2 = new Category(2L, "Hogar");
 
-        CategoryDto d1 = new CategoryDto(1L, "Electrónica", List.of());
-        CategoryDto d2 = new CategoryDto(2L, "Hogar", List.of());
+        CategoryDto d1 = new CategoryDto(1L, "Electrónica");
+        CategoryDto d2 = new CategoryDto(2L, "Hogar");
 
         when(repository.findAll()).thenReturn(List.of(e1, e2));
         when(mapper.toDto(e1)).thenReturn(d1);

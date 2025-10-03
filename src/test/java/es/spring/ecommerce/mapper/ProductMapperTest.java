@@ -33,7 +33,7 @@ class ProductMapperTest {
         // given
         ProductDto dto = new ProductDto(1L, "Mouse", 19.99, 7, 10L);
         Category cat = new Category(10L, "Periféricos", null);
-        when(categoryRepository.findById(10L)).thenReturn(Optional.of(cat));
+        when(categoryRepository.getReferenceById(10L)).thenReturn(cat);
 
         // when
         Product entity = mapper.toEntity(dto);
